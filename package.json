@@ -1,0 +1,56 @@
+{
+  "name": "ai-quest-engineer-path",
+  "version": "1.0.0",
+  "description": "AI Quest: Engineer Path - a gamified desktop roadmap for becoming an AI engineer.",
+  "main": "electron/main.cjs",
+  "author": "AI Quest",
+  "private": true,
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "electron": "electron .",
+    "app": "npm run build && electron .",
+    "dist": "npm run build && electron-builder --win nsis"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
+    "vite": "^7.1.7",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "framer-motion": "^12.23.22",
+    "lucide-react": "^0.544.0",
+    "electron": "^38.1.2",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.aiquest.engineerpath",
+    "productName": "AI Quest Engineer Path",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "icon": "electron/icon.png",
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "${productName} Setup-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "AI Quest Engineer Path"
+    },
+    "extraMetadata": {
+      "dependencies": {}
+    }
+  }
+}
